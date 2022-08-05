@@ -40,10 +40,10 @@ router.get('/TestData', (req, res) => {
                     console.log(startDate);
                     console.log(endDate);
 
-
+                    schedule.cancelJob(data.prdId);
                     //set schedule
-                    schedule.scheduleJob(edate, function(){
-                        schedule.cancelJob();
+                    schedule.scheduleJob(data.prdId, edate, function(){
+        
                         console.log("끝낫어용");
                         db.collection("auctions").doc(data.prdId).get().then(function(doc){
                             
